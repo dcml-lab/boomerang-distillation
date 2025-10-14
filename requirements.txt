@@ -1,0 +1,6 @@
+torch
+datasets
+lm-eval
+langdetect
+immutabledict
+transformers==4.51.3
