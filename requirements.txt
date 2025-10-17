@@ -1,6 +1,6 @@
-torch
+torch==2.9.0
 datasets==3.6.0
-lm-eval
-langdetect
-immutabledict
+lm-eval==0.4.9.1
+langdetect==1.0.9
+immutabledict==4.2.2
 transformers==4.51.3
