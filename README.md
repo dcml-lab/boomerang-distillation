@@ -28,7 +28,7 @@ To reproduce the environment used in the paper experiments, use `requirements_de
 
 We provide the distilled student models used in our paper on [Hugging Face](https://huggingface.co/collections/Harvard-DCML/boomerang-distillation-68e95c276a09358d9a39b52e). These models can directly be loaded and patched with their corresponding teacher blocks to create intermediate models.
 
-If you wish to train custom student models using `train/train.py`, the following training script will train a student model pruned and distilled from `Qwen3-4B-Base` using 4 GPUs:
+If you wish to train custom student models using `train/train.py`, the following training script will train a student model pruned and distilled from `Qwen3-4B-Base` using 4 GPUs (make sure you installed `requirements_dev.txt`):
 
 ```bash
 TEACHER="Qwen/Qwen3-4B-Base"
@@ -42,7 +42,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --standalone --nnodes=1 --nproc-per-node=4
 Options:
 - `teacher_model_name_or_path`: Hugging Face reference or local model path for the teacher model.
 - `save_directory`: directory to save distilled models in.
-- `dataset`: dataset used for distillation. We use the deduplicated version of The Pile in our paper. Note that by default, distillation is run for `500` steps consisting of `4.2`M tokens to match the setting from our paper, but this can be changed by setting `--max_steps`.
+- `dataset`: dataset used for distillation. We use the deduplicated version of The Pile in our paper. Note that by default, distillation is run for `500` steps consisting of 4.2M tokens to match the setting from our paper, but this can be changed by setting `--max_steps`.
 - `fsdp_config`: if using fsdp, set this to the teacher model name to ensure that fsdp chooses the correct modules to wrap (see `train/training_args.py`)
 
 Notes:
