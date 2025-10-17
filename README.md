@@ -26,7 +26,7 @@ To reproduce the environment used in the paper experiments, use `requirements_de
 
 ## Distillation training (optional)
 
-We provide the distilled student models used in our paper on [huggingface](https://huggingface.co/collections/Harvard-DCML/boomerang-distillation-68e95c276a09358d9a39b52e). These models can directly be loaded and patched with their corresponding teacher blocks to create intermediate models.
+We provide the distilled student models used in our paper on [Hugging Face](https://huggingface.co/collections/Harvard-DCML/boomerang-distillation-68e95c276a09358d9a39b52e). These models can directly be loaded and patched with their corresponding teacher blocks to create intermediate models.
 
 If you wish to train custom student models using `train/train.py`, the following training script will train a student model pruned and distilled from `Qwen3-4B-Base` using 4 GPUs:
 
@@ -40,7 +40,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 torchrun --standalone --nnodes=1 --nproc-per-node=4
     --fsdp_config $TEACHER \
 ```
 Options:
-- `teacher_model_name_or_path`: Huggingface reference or local model path for the teacher model.
+- `teacher_model_name_or_path`: Hugging Face reference or local model path for the teacher model.
 - `save_directory`: directory to save distilled models in.
 - `dataset`: dataset used for distillation. We use the deduplicated version of The Pile in our paper. Note that by default, distillation is run for `500` steps consisting of `4.2`M tokens to match the setting from our paper, but this can be changed by setting `--max_steps`.
 - `fsdp_config`: if using fsdp, set this to the teacher model name to ensure that fsdp chooses the correct modules to wrap (see `train/training_args.py`)
@@ -64,15 +64,15 @@ python3 -m evaluate.evaluate \
     --num_layers_to_patch 4 \
 ```
 Options:
-- `teacher_model_name_or_path`: Huggingface reference or local model path for the teacher model.
-- `student_model_name_or_path`: Huggingface reference or local model path for the student model. The model paths we provide on Huggingface are in the table below.
-- `save_directory`: Local folder to save `lm-evaluation-harness` results in.
-- `num_layers_to_patch`: Number of student layers to patch with their corresponding teacher blocks. The minimum and maximum values for each model are in the table below.
-- `patch_first_k_layers`: Include this argument to patch the first `num_layers_to_patch` student layers, otherwise the last `num_layers_to_patch` layers will be patched. This defaults to True for `Llama-3.2-3B` and False for the remaining models.
-- `tasks`: Comma-separated string of `lm-evaluation-harness` tasks to evaluate the intermediate model on. Set to the full suite of tasks used in the paper (`"arc_easy,arc_challenge,boolq,hellaswag,openbookqa,piqa,winogrande,race,mmlu,rte,wikitext,gsm8k_cot,ifeval,hendrycks_math"`) by default.
-- `eval_batch_size`: Batch size used for evaluation (default `4`).
--  `dtype`: Data type used to load the model weights. Set to `bfloat16` by default.
-- `override_llama_patching`: If set, overrides the default patching order for Llama models (first k layers) and uses the order specified by `patch_first_k_layers`.
+- `teacher_model_name_or_path`: Hugging Face reference or local model path for the teacher model.
+- `student_model_name_or_path`: Hugging Face reference or local model path for the student model. The model paths we provide on Hugging Face are in the table below.
+- `save_directory`: local folder to save `lm-evaluation-harness` results in.
+- `num_layers_to_patch`: number of student layers to patch with their corresponding teacher blocks. The minimum and maximum values for each model are in the table below.
+- `patch_first_k_layers`: include this argument to patch the first `num_layers_to_patch` student layers, otherwise the last `num_layers_to_patch` layers will be patched. This defaults to True for `Llama-3.2-3B` and False for the remaining models.
+- `tasks`: comma-separated string of `lm-evaluation-harness` tasks to evaluate the intermediate model on. Set to the full suite of tasks used in the paper (`"arc_easy,arc_challenge,boolq,hellaswag,openbookqa,piqa,winogrande,race,mmlu,rte,wikitext,gsm8k_cot,ifeval,hendrycks_math"`) by default.
+- `eval_batch_size`: batch size used for evaluation (default `4`).
+-  `dtype`: data type used to load the model weights. Set to `bfloat16` by default.
+- `override_llama_patching`: if set, overrides the default patching order for Llama models (first k layers) and uses the order specified by `patch_first_k_layers`.
 
 #### Model configurations
 
