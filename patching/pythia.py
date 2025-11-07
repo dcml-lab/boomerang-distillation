@@ -34,6 +34,9 @@ def patch_first_k_layers(
     student_idx, teacher_idx = get_layer_cutoffs(
         student_config["copied_teacher_layers"], k, patch_from_last=False
     )
+    if student_idx == 0:
+        return teacher_model
+        
     intermediate_model = reload_student_model(
         student_model,
         teacher_model,
@@ -83,6 +86,9 @@ def patch_last_k_layers(
     student_idx, teacher_idx = get_layer_cutoffs(
         student_config["copied_teacher_layers"], k, patch_from_last=True
     )
+    if student_idx == student_model.config.num_hidden_layers:
+        return teacher_model
+        
     intermediate_model = reload_student_model(
         student_model,
         teacher_model,
