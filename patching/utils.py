@@ -80,12 +80,17 @@ def get_layer_cutoffs(all_layers_to_keep, k: int, patch_from_last: bool = True):
             if all_layers_to_keep[i + 1] - l > 1:
                 layers_to_keep.append(l)
                 small_model_layers.append(i)
+        if k >= len(small_model_layers):
+            # assumes that last layer is kept in teacher
+            return len(all_layers_to_keep), all_layers_to_keep[-1] + 1
         return small_model_layers[k], layers_to_keep[k]
     else:
         for i, l in enumerate(all_layers_to_keep[1:]):
             if l - all_layers_to_keep[i] > 1:
                 layers_to_keep.append(l)
                 small_model_layers.append(i + 1)
+        if (k+1) > len(small_model_layers):
+            return 0, 0
         return small_model_layers[-1 * (k + 1)], layers_to_keep[-1 * (k + 1)]
 
 
