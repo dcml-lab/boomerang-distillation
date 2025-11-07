@@ -67,6 +67,9 @@ def build_intermediate_model(
     teacher = AutoModelForCausalLM.from_pretrained(
         teacher_name_or_path, torch_dtype=dtype
     )
+    if num_layers_to_patch == teacher_model.config.num_hidden_layers:
+        return teacher_model, tokenizer
+        
     student = AutoModelForCausalLM.from_pretrained(
         student_name_or_path, torch_dtype=dtype
     )
