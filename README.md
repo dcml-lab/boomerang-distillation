@@ -2,7 +2,7 @@
 
 Boomerang distillation is a phenomenon in LLMs, where distilling a teacher model into a student model enables us to reconstruct intermediate-sized models by incorporating teacher layers into the student with no additional training.
 
-This repo contains code for boomerang distillation from our paper [Boomerang Distillation Enables Zero-Shot Model Size Interpolation](https://arxiv.org/abs/2510.05064).
+This repo contains code for boomerang distillation from our ICLR 2026 paper [Boomerang Distillation Enables Zero-Shot Model Size Interpolation](https://arxiv.org/abs/2510.05064).
 
 ## Table of contents
 - [Boomerang Distillation](#boomerang-distillation)
