@@ -4,6 +4,11 @@ Boomerang distillation is a phenomenon in LLMs, where distilling a teacher model
 
 This repo contains code for boomerang distillation from our ICLR 2026 paper [Boomerang Distillation Enables Zero-Shot Model Size Interpolation](https://arxiv.org/abs/2510.05064).
 
+## News
+
+- **July 2026**: New boomerang distillation work [Understanding Layer Patching in Model Size Interpolation](http://arxiv.org/abs/2607.08170) appearing at the 2026 ICML AdaptFM workshop.
+- **January 2026**: Boomerang distillation accepted to ICLR 2026.
+
 ## Table of contents
 - [Boomerang Distillation](#boomerang-distillation)
     - [Table of contents](#table-of-contents)
