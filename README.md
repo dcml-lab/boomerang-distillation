@@ -6,6 +6,8 @@ This repo contains code for boomerang distillation from our ICLR 2026 paper [Boo
 
 ## News
 
+- **September 2026**: [Understanding Layer Patching in Model Size Interpolation](http://arxiv.org/abs/2607.08170) accepted to NeurIPS 2026.
+- **August 2026**: New paper on boomerang distillation for post-trained models [Thinking at the Right Size: Amortized Distillation Across Post-Trained LLMs](https://arxiv.org/abs/2608.22854) accepted to EMNLP Findings 2026.
 - **July 2026**: New boomerang distillation work [Understanding Layer Patching in Model Size Interpolation](http://arxiv.org/abs/2607.08170) appearing at the 2026 ICML AdaptFM workshop.
 - **January 2026**: Boomerang distillation accepted to ICLR 2026.
 
